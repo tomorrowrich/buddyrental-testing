@@ -1,2 +1,5 @@
 buddyrental_testing\userAPITest.class
+buddyrental_testing\ProfilePicUpdateStepDef.class
 buddyrental_testing\cucumberTestRunner.class
+buddyrental_testing\CusRegStepDef.class
+buddyrental_testing\UserUpdateStepDef.class
