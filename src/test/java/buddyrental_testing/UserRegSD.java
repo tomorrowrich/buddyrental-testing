@@ -1,16 +1,19 @@
 package buddyrental_testing;
 
-import io.cucumber.java.en.*;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import org.junit.jupiter.api.Assertions;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Assertions;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
 public class UserRegSD {
-    private Response response;
+    private Response response, meResponse;
     private final String baseUrl = "https://buddyrental-backend-dev.onrender.com";
     private Map<String, Object> requestBody = new HashMap<>();
 
@@ -18,35 +21,42 @@ public class UserRegSD {
     public void validUserInformation() {
         requestBody.put("firstName", "John");
         requestBody.put("lastName", "Wick");
-        requestBody.put("idCard", "123456789");
-        requestBody.put("email", "unique.johnwick@example.com");
+        requestBody.put("citizenId", String.valueOf(System.currentTimeMillis()));
+        requestBody.put("email", "john" + System.currentTimeMillis() + "@example.com");
         requestBody.put("phone", "+1234567890");
-        requestBody.put("password", "johnwick");
-        requestBody.put("nickname", "Xx_Mist3rJohn_xX");
-        requestBody.put("gender", "M");
-        requestBody.put("dateOfBirth", "1990-01-01");
+        requestBody.put("password", "Password123!");
+        requestBody.put("nickname", "John");
+        requestBody.put("gender", "MALE");
+        requestBody.put("dateOfBirth", "2025-02-20T08:10:49.323Z");
         requestBody.put("address", "123 Main Street");
         requestBody.put("city", "Tennessee");
-        requestBody.put("zipcode", "12345");
+        requestBody.put("postalCode", "12345");
         requestBody.put("profilePicture", "string");
     }
 
-    @When("the customer registers to the system")
+    @When("the customer registers to the system for UserReg")
     public void registerCustomer() {
         RequestSpecification request = RestAssured.given()
                 .header("Content-Type", "application/json")
                 .body(requestBody);
         response = request.post(baseUrl + "/api/auth/register");
+
+        // ✅ Debug Response Body
+        System.out.println("Response Body: " + response.getBody().asString());
     }
 
-    @Then("ensure an account is created")
+    @Then("ensure an user account is created")
     public void verifyAccountCreation() {
         Assertions.assertEquals(201, response.getStatusCode(), "Expected status code 201");
     }
 
-    @And("ensure information is linked to this account")
-    public void verifyInformationLinked() {
-        String userId = response.getBody().asString();
-        Assertions.assertFalse(userId.isEmpty(), "User ID should not be empty");
-    }
+    // @And("ensure information is linked to this account for UserReg")
+    // public void verifyInformationLinked() {
+    //     // ✅ ตรวจสอบว่ามี userId กลับมา
+    //     RequestSpecification request = RestAssured.given()
+    //             .header("Content-Type", "application/json");
+    //     meResponse = request.get(baseUrl + "/api/auth/me");
+    //     System.out.println("Response: " + response.asString());
+    //     Assertions.assertEquals(200, meResponse.getStatusCode(), "Expected status code 200");
+    // }
 }

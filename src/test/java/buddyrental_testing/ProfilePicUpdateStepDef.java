@@ -1,5 +1,4 @@
 package buddyrental_testing;
-
 import io.cucumber.java.en.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -9,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 public class ProfilePicUpdateStepDef
 {
-    /*
+/*
     private final String baseUrl = "https://buddyrental-backend-dev.onrender.com";
     private Response response;
     private String accessToken;
@@ -20,7 +19,7 @@ public class ProfilePicUpdateStepDef
     private final String validEmail = "john@doe.com";
     private final String validPassword = "password123";
 
-    @Given("the user is logged in")
+    @Given("the user is logged in for profile update")
     public void the_user_is_logged_in() {
         // POST request to /api/auth/signin
         Map<String, String> loginRequest = new HashMap<>();

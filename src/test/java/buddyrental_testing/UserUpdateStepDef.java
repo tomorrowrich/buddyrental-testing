@@ -1,12 +1,16 @@
 package buddyrental_testing;
 
-import io.cucumber.java.en.*;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import io.restassured.http.ContentType;
-import org.junit.jupiter.api.Assertions;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.junit.jupiter.api.Assertions;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 
 public class UserUpdateStepDef {
     /*
@@ -16,9 +20,10 @@ public class UserUpdateStepDef {
     private String userId;
 
     // Login credentials
-    private final String clientKey = "MOCK_CLIENT_KEY";
-    private final String validEmail = "john@doe.com";
-    private final String validPassword = "password123";
+    private final String clientKey = "b481c464ec2556f0d7e6a1fc46c99a92";
+    private final String validEmail = "john.doe@example.com";
+    private final String validPassword = "Password123!";
+    private final String phone = String.valueOf(System.currentTimeMillis());
 
     @Given("the login email and password are valid")
     public void the_user_is_logged_in() {
@@ -31,7 +36,7 @@ public class UserUpdateStepDef {
         response = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .body(loginRequest)
-                .post(baseUrl + "/api/auth/signin");
+                .post(baseUrl + "/api/auth/login");
 
         Assertions.assertEquals(201, response.getStatusCode(), "Login failed.");
         accessToken = response.jsonPath().getString("accessToken");
@@ -44,11 +49,11 @@ public class UserUpdateStepDef {
     public void the_user_submits_the_updated_details() {
         // Prepare updated user details for PATCH request
         Map<String, Object> updatedDetails = new HashMap<>();
-        updatedDetails.put("displayName", "John Doe");
+        updatedDetails.put("nickname", "John Doe");
         updatedDetails.put("description", "I love coding and coffee.");
         updatedDetails.put("profilePicture", "https://example.com/profile.jpg");
         updatedDetails.put("address", "123 Main Street");
-        updatedDetails.put("phoneNumber", "0123456789");
+        updatedDetails.put("phone", phone);
 
         // PATCH request to update user details
         response = RestAssured.given()
@@ -65,15 +70,14 @@ public class UserUpdateStepDef {
         // Validate updated details by GET request
         Response getUserResponse = RestAssured.given()
                 .header("Authorization", "Bearer " + accessToken)
-                .get(baseUrl + "/api/users/" + userId);
+                .get(baseUrl + "/api/auth/me");
 
         Assertions.assertEquals(200, getUserResponse.getStatusCode(), "Failed to retrieve updated user.");
         Assertions.assertEquals("John Doe", getUserResponse.jsonPath().getString("displayName"));
         Assertions.assertEquals("I love coding and coffee.", getUserResponse.jsonPath().getString("description"));
         Assertions.assertEquals("https://example.com/profile.jpg", getUserResponse.jsonPath().getString("profilePicture"));
         Assertions.assertEquals("123 Main Street", getUserResponse.jsonPath().getString("address"));
-        Assertions.assertEquals("0123456789", getUserResponse.jsonPath().getString("phoneNumber"));
+        Assertions.assertEquals(phone, getUserResponse.jsonPath().getString("phoneNumber"));
     }
-
-     */
+*/
 }
