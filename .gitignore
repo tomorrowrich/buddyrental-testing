@@ -1,0 +1,44 @@
+# Build และ Compilation Output
+target/
+out/
+bin/
+build/
+
+# IDE และ Editor Configuration
+.idea/
+.vscode/
+*.iml
+*.log
+
+# Maven และ Gradle
+.mvn/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+dependency-reduced-pom.xml
+
+# Node.js (ถ้ามีการใช้ Playwright หรือ Cypress)
+node_modules/
+npm-debug.log
+yarn.lock
+package-lock.json
+
+# Java และ Cucumber Test Reports
+target/surefire-reports/
+target/failsafe-reports/
+target/site/
+target/cucumber-reports/
+cucumber-html-reports/
+cucumber.json
+test-output/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Environment Variables
+.env
+.env.local
+.env.test
+.env.production

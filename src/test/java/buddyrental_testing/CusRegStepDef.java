@@ -1,12 +1,17 @@
 package buddyrental_testing;
 
-import io.cucumber.java.en.*;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import io.restassured.http.ContentType;
-import org.junit.jupiter.api.Assertions;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.junit.jupiter.api.Assertions;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 
 
 public class CusRegStepDef {
@@ -19,11 +24,22 @@ public class CusRegStepDef {
     @Given("the information is valid")
     public void the_information_is_valid() {
         // Preparing valid user registration data
-        requestBody.put("email", "john" + System.currentTimeMillis() + "@doe.com"); // Unique email
-        requestBody.put("password", "password123");
+        requestBody.put("firstName", "John");
+        requestBody.put("lastName", "Wick");
+        requestBody.put("citizenId", String.valueOf(System.currentTimeMillis()));
+        requestBody.put("email", "john" + System.currentTimeMillis() + "@example.com");
+        requestBody.put("phone", "+1234567890");
+        requestBody.put("password", "Password123!");
+        requestBody.put("nickname", "John");
+        requestBody.put("gender", "MALE");
+        requestBody.put("dateOfBirth", "2025-02-20T08:10:49.323Z");
+        requestBody.put("address", "123 Main Street");
+        requestBody.put("city", "Tennessee");
+        requestBody.put("postalCode", "12345");
+        requestBody.put("profilePicture", "string");
     }
 
-    @When("the customer registers to the system")
+    @When("the customer registers to the system for CusReg")
     public void the_customer_registers_to_the_system() {
         response = RestAssured.given()
                 .contentType(ContentType.JSON)
@@ -35,10 +51,15 @@ public class CusRegStepDef {
         }
     }
 
-    @Then("ensure an account is created")
+    @Then("ensure a customer account is created for CusReg")
     public void an_account_should_be_created() {
+        // System.out.println("Response Status Code: " + response.getStatusCode());
+        // System.out.println("Response Body: " + response.getBody().asString());
+        // System.out.println("Request Body: " + requestBody);
+        
         Assertions.assertEquals(201, response.getStatusCode());
     }
+
 
     @Then("ensure information is linked to this account")
     public void ensureInformationIsLinkedToThisAccount() {

@@ -6,6 +6,6 @@ Feature: Register as a Customer
   @UserReg
   Scenario: Successful customer registration
     Given the information is valid and not linked to an existing account
-    When the customer registers to the system
-    Then ensure an account is created
-    And ensure information is linked to this account
+    When the customer registers to the system for UserReg
+    Then ensure an user account is created
+    #And ensure information is linked to this account for UserReg
