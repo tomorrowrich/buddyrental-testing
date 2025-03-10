@@ -14,7 +14,8 @@ import io.restassured.specification.RequestSpecification;
 
 public class UserRegSD {
     private Response response, meResponse;
-    private final String baseUrl = "https://buddyrental-backend-dev.onrender.com";
+    // private final String baseUrl = "https://buddyrental-backend-dev.onrender.com";
+    private String baseUrl = "http://localhost:55500";
     private Map<String, Object> requestBody = new HashMap<>();
 
     @Given("the information is valid and not linked to an existing account")

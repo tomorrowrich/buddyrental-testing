@@ -1,5 +1,8 @@
+buddyrental_testing\UserLoginSD.class
 buddyrental_testing\ProfilePicUpdateStepDef.class
+buddyrental_testing\UserEditProfileSD.class
 buddyrental_testing\UserLogoutSD.class
 buddyrental_testing\cucumberTestRunner.class
 buddyrental_testing\CusRegStepDef.class
+buddyrental_testing\UserRegSD.class
 buddyrental_testing\UserUpdateStepDef.class

@@ -14,7 +14,8 @@ import io.restassured.specification.RequestSpecification;
 public class UserEditProfileSD {
 
     private Response response;
-    private String baseUrl = "https://buddyrental-backend-dev.onrender.com";
+    // private String baseUrl = "https://buddyrental-backend-dev.onrender.com";
+    private String baseUrl = "http://localhost:55500";
     private String accessToken;
     private Map<String, Object> requestBody = new HashMap<>();
     private String phone = String.valueOf(System.currentTimeMillis());

@@ -16,7 +16,8 @@ import io.restassured.specification.RequestSpecification;
 public class UserLoginSD {
     private Response response;
     private Map<String, Object> requestBody = new HashMap<>();
-    private String baseUrl = "https://buddyrental-backend-dev.onrender.com";
+    // private String baseUrl = "https://buddyrental-backend-dev.onrender.com";
+    private String baseUrl = "http://localhost:55500";
     @Given("the login email and password is valid")
     public void validLoginCredentials() {
         requestBody.clear();
