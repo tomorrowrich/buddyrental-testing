@@ -11,21 +11,21 @@ import java.util.Map;
 public class UserEditProfileSD {
 
     private Response response;
-    private String baseUrl = "https://buddyrental-backend-dev.onrender.com";
+    private String baseUrl = "http://localhost:55500";
     private String accessToken;
     private Map<String, Object> requestBody = new HashMap<>();
 
     @Given("the user is logged in")
     public void userIsLoggedIn() {
         Map<String, Object> loginRequest = new HashMap<>();
-        loginRequest.put("clientKey", "MOCK_CLIENT_KEY");
-        loginRequest.put("email", "unique.johnwick@example.com");
-        loginRequest.put("password", "johnwick");
+        loginRequest.put("clientKey", "DEFAULT_CLIENT_KEY");
+        loginRequest.put("email", "john.doe@example.com");
+        loginRequest.put("password", "Password123!");
 
         RequestSpecification request = RestAssured.given()
                 .header("Content-Type", "application/json")
                 .body(loginRequest);
-        response = request.post(baseUrl + "/api/auth/signin");
+        response = request.post(baseUrl + "/api/auth/login");
 
         Assertions.assertEquals(201, response.getStatusCode(), "Expected status code 201");
         accessToken = response.jsonPath().getString("accessToken");

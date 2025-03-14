@@ -12,13 +12,13 @@ import java.util.Map;
 public class UserLoginSD {
     private Response response;
     private Map<String, Object> requestBody = new HashMap<>();
-    private String baseUrl = "https://buddyrental-backend-dev.onrender.com";
+    private String baseUrl = "http://localhost:55500";
     @Given("the login email and password is valid")
     public void validLoginCredentials() {
         requestBody.clear();
-        requestBody.put("clientKey", "MOCK_CLIENT_KEY");
-        requestBody.put("email", "unique.johnwick@example.com");
-        requestBody.put("password", "johnwick");
+        requestBody.put("clientKey", "DEFAULT_CLIENT_KEY");
+        requestBody.put("email", "john.doe@example.com");
+        requestBody.put("password", "Password123!");
     }
 
     @And("the customer is not logged in")
@@ -31,7 +31,7 @@ public class UserLoginSD {
         RequestSpecification request = RestAssured.given()
                 .header("Content-Type", "application/json")
                 .body(requestBody);
-        response = request.post(baseUrl + "/api/auth/signin");
+        response = request.post(baseUrl + "/api/auth/login");
     }
 
     @Then("ensure the customer is logged in")
