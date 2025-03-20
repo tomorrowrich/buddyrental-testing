@@ -1,4 +1,4 @@
-# 📌 README: Run This Project on IntelliJ IDEA
+# BuddyRental Testing
 
 ## 🚀 Prerequisites
 - **Java 17+** (Recommended: Java 23)  
