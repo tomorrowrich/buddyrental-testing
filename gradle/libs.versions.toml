@@ -1,0 +1,21 @@
+[versions]
+com-fasterxml-jackson-core-jackson-databind = "2.15.2"
+io-cucumber-cucumber-java = "7.14.0"
+io-cucumber-cucumber-junit = "7.14.0"
+io-rest-assured-json-path = "5.5.1"
+io-rest-assured-rest-assured = "5.3.0"
+org-assertj-assertj-core = "3.24.2"
+org-junit-jupiter-junit-jupiter-api = "5.11.0"
+org-junit-jupiter-junit-jupiter-params = "5.11.0"
+net-datafaker-datafaker= "2.4.2"
+
+[libraries]
+com-fasterxml-jackson-core-jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "com-fasterxml-jackson-core-jackson-databind" }
+io-cucumber-cucumber-java = { module = "io.cucumber:cucumber-java", version.ref = "io-cucumber-cucumber-java" }
+io-cucumber-cucumber-junit = { module = "io.cucumber:cucumber-junit", version.ref = "io-cucumber-cucumber-junit" }
+io-rest-assured-json-path = { module = "io.rest-assured:json-path", version.ref = "io-rest-assured-json-path" }
+io-rest-assured-rest-assured = { module = "io.rest-assured:rest-assured", version.ref = "io-rest-assured-rest-assured" }
+org-assertj-assertj-core = { module = "org.assertj:assertj-core", version.ref = "org-assertj-assertj-core" }
+org-junit-jupiter-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "org-junit-jupiter-junit-jupiter-api" }
+org-junit-jupiter-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "org-junit-jupiter-junit-jupiter-params" }
+net-datafaker-datafaker = {module = "net.datafaker:datafaker", version.ref = "net-datafaker-datafaker" }
