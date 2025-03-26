@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@cucumber/cucumber";
+import { Given, When, Then, After, Before } from "@cucumber/cucumber";
 import { Page, Browser, chromium, expect } from "@playwright/test";
 
 let browser: Browser;
@@ -6,11 +6,20 @@ let page: Page;
 const baseUrl = "http://localhost:3000";
 const timeout = 30000;
 
-Given("I am logged in", async function () {
-  browser = await chromium.launch({ headless: false, slowMo: 200 }); // ตั้งค่า slowMo เป็น 100ms
+Before(async function () {
+  // เปิด browser ทีละตัวก่อนเริ่มการทดสอบ
+  browser = await chromium.launch({ headless: false, slowMo: 200 });
   const context = await browser.newContext();
   page = await context.newPage();
+});
 
+After(async function () {
+  // ปิด browser หลังการทดสอบเสร็จสิ้น
+  await browser.close();
+});
+
+//Scenario: Update personal information successfully
+Given("I am logged in", async function () {
   await page.goto(baseUrl + "/login", { timeout: timeout });
 
   await page.waitForSelector('input[id="email"]', { timeout: timeout });
@@ -23,6 +32,7 @@ Given("I am logged in", async function () {
   await page.click('button[type="submit"]');
 
   await page.waitForURL(baseUrl + "/app", { timeout: timeout });
+  await page.waitForTimeout(500)
 });
 
 When("I navigate to the profile edit page", async function () {
@@ -85,4 +95,17 @@ Then("I should see my updated name as {string}", async function (expectedName: s
   await page.waitForTimeout(1000);
 
   await browser.close();
+});
+
+//Scenario: Fail to update personal information with invalid input
+Then("I should see an {string} for the invalid input", async function (error_message: string) {
+  page.once('dialog', async (dialog) => {
+    const alertMessage = dialog.message();
+    expect(alertMessage).toContain(error_message);
+    await page.waitForTimeout(500);
+    await dialog.dismiss();
+  });
+
+  await page.waitForSelector('button:has-text("Save Change")', { timeout: timeout });
+  await page.click('button:has-text("Save Change")');
 });
