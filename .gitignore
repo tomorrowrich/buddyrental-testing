@@ -75,3 +75,15 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# Node modules
+/node_modules/
+
+# npm package lock file (if you're using npm)
+package-lock.json
+
+# Yarn lock file (if you're using Yarn)
+yarn.lock
+
+# Build output
+/dist/
