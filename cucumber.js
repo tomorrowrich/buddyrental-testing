@@ -4,7 +4,7 @@ module.exports = {
     requireModule: ["ts-node/register"],
     format: ["progress-bar"],
     paths: ["src/test/resources/buddyrental/*.feature"], // ชี้ไปที่ไฟล์ Feature
-    parallel: 2,
+    parallel: 1,
     publishQuiet: true,
   },
 };
