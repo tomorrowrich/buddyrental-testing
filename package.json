@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.51.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  },
+  "name": "buddyrental-testing",
+  "description": "",
+  "version": "1.0.0",
+  "main": "cucumber.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomorrowrich/buddyrental-testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomorrowrich/buddyrental-testing/issues"
+  },
+  "homepage": "https://github.com/tomorrowrich/buddyrental-testing#readme"
+}
