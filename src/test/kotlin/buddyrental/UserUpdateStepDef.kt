@@ -1,3 +1,0 @@
-package buddyrental
-
-class UserUpdateStepDef 

@@ -14,22 +14,8 @@ import org.junit.jupiter.api.Assertions.assertTrue
 class UserLoginStepDef {
     private lateinit var response: Response
     private val requestBody: MutableMap<String, Any> = mutableMapOf()
-    private val faker = Faker()
-
-    private val validEmail = faker.internet().emailAddress()
-    private val validPassword = "Test@${faker.number().digits(5)}"
     private val baseUrl = "http://localhost:55500" // Change if needed
 
-
-    @Given("the login email and password is valid")
-    fun the_login_email_and_password_is_valid() {
-        requestBody.clear()
-        requestBody["clientKey"] = "DEFAULT_CLIENT_KEY"
-        requestBody["email"] = validEmail
-        requestBody["password"] = validPassword
-
-        println("Generated Login Credentials - Email: $validEmail | Password: $validPassword")
-    }
 
     @Given("the login email is {string}")
     fun the_login_email_is(email: String) {
@@ -46,7 +32,7 @@ class UserLoginStepDef {
 
     @And("the login password is {string}")
     fun the_login_password_is(password: String) {
-        requestBody["password"] = if (password.isNotEmpty()) password else ""
+        requestBody["password"] = password.ifEmpty { "" }
     }
 
     @And("the customer is not logged in")

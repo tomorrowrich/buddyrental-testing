@@ -10,7 +10,7 @@ Feature: User Login
     Given I visit the login page
     When I input username "john.doe@example.com" and password "Password123!"
     And I click on the login button
-    Then I should navigate to "/app"
+    Then I should navigate to feed
 
   # ✅ Scenario สำหรับการ login ที่ไม่สำเร็จ
   @Negative

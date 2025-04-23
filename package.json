@@ -2,6 +2,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
     "@playwright/test": "^1.51.1",
+    "dotenv": "^16.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   },
@@ -22,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/tomorrowrich/buddyrental-testing/issues"
   },
-  "homepage": "https://github.com/tomorrowrich/buddyrental-testing#readme"
+  "homepage": "https://github.com/tomorrowrich/buddyrental-testing#readme",
+  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
 }

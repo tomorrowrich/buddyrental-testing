@@ -1,10 +1,9 @@
 module.exports = {
   default: {
-    require: ["src/test/typescript/**/*.ts"], // ชี้ไปที่ Step Definitions
+    require: ["src/test/typescript/**/*.ts"],
     requireModule: ["ts-node/register"],
     format: ["progress-bar"],
-    paths: ["src/test/resources/buddyrental/*.feature"], // ชี้ไปที่ไฟล์ Feature
-    parallel: 1,
-    publishQuiet: true,
+    paths: ["src/test/resources/buddyrental/*.feature"],
+    parallel: 3,
   },
 };
